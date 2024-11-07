@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scrapping</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row m-5">
+    <form method="POST" action="/">
+      {% csrf_token %}
+        <div class="col-md-6">
+        <input class="form-control" name="page" type="text" placeholder="Enter your link">
+        </div>
+      <div class="col-md-2">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form>
+        <div class="col-md-4">
+            <button class="btn btn-warning" type="submit">Clear</button>
+        </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Link</th>
+          </tr>
+        </thead>
+        {% for i in data_values %}
+        <tbody>
+          <tr>
+<!--        <th scope="row">1</th>-->
+            <td>{{ i.id }}</td>
+            <td>{{ i.string_name }}</td>
+            <td>{{ i.address }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
